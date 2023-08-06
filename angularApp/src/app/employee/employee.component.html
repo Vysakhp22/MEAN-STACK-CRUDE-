@@ -1,0 +1,87 @@
+<div class="row main">
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #employeeform="ngForm" (ngSubmit)="onSubmit(employeeform)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="Employee._id">
+                            <div class="row">
+
+                                <div class="input-field col s12">
+                                    <input id="Name" type="text" name="name" #name="ngModel"
+                                        [(ngModel)]="Employee.name">
+                                    <label>Name
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="Position" type="text" name="position" #position="ngModel"
+                                        [(ngModel)]="Employee.position">
+                                    <label for="Position">Position
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="Office" type="text" name="office" #office="ngModel"
+                                        [(ngModel)]="Employee.office">
+                                    <label for="Office">Office
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="Salary" type="number" name="salary" #salary="ngModel"
+                                        [(ngModel)]="Employee.salary">
+                                    <label for="Salary">Salary
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <button class="btn btn-custom right" type="button" name="action"
+                                (click)="resetForm(employeeform)">Reset
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Office</th>
+                                    <th>Position</th>
+                                    <th>Salary</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let item of empArray">
+                                <td>{{item.name}}</td>
+                                <td>{{item.office}}</td>
+                                <td>{{item.position}}</td>
+                                <td>{{item.salary}}</td>
+                                <td>
+                                    <a class="action-btn" (click)="onEdit(item._id)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="action-btn" (click)="deleteEmp(item._id)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
