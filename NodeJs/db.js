@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
+const cors = require('cors');
 
 const employeeRoutes = require('./controllers/employeeController');
 
@@ -15,6 +16,7 @@ mongoose.connect('mongodb+srv://mean-stack:node-emp@mean.cobz9cx.mongodb.net/?re
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
